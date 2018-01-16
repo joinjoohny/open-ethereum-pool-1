@@ -1192,7 +1192,7 @@ func (r *RedisClient) CollectWorkersStats(sWindow, lWindow time.Duration, login 
 	shares := cmds[2].(*redis.StringSliceCmd).Val()
 
 	csh := 0
-	//	var myshares []string
+		var myshares []string
 	for _, val := range shares {
 		text := "█"
 		if val != login {
