@@ -1,9 +1,9 @@
 {
 	"threads": 2,
-	"coin": "eth-pplns",
+	"coin": "eth",
 	"name": "main",
 	"pplns": 1000,
-	"coin-name":"ETH",
+    "coin-name":"ETH",
 
 	"proxy": {
 		"enabled": true,
@@ -11,7 +11,7 @@
 		"limitHeadersSize": 1024,
 		"limitBodySize": 256,
 		"behindReverseProxy": false,
-		"blockRefreshInterval": "120ms",
+		"blockRefreshInterval": "300ms",
 		"stateUpdateInterval": "3s",
 		"difficulty": 2000000000,
 		"hashrateExpiration": "3h",
@@ -84,7 +84,7 @@
 
 	"redis": {
 		"endpoint": "127.0.0.1:6379",
-		"poolSize": 10,
+		"poolSize": 100,
 		"database": 0,
 		"password": ""
 	},
