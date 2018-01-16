@@ -1194,17 +1194,17 @@ func (r *RedisClient) CollectWorkersStats(sWindow, lWindow time.Duration, login 
 	csh := 0
 	//	var myshares []string
 	for _, val := range shares {
-		//		text := "|"
+		text := "█"
 		if val != login {
-			//			text = "_"
+			text = "▁"
 		} else {
 			csh++
 		}
 		//myshares = append(myshares,  strconv.FormatInt(int64(ind) 10))
-		//		myshares = append(myshares, text)
+		myshares = append(myshares,  text)
 	}
 	stats["roundShares"] = csh
-	//stats["shares"] = myshares
+	stats["shares"] = myshares
 	stats["workers"] = workers
 	stats["workersTotal"] = len(workers)
 	stats["workersOnline"] = online
