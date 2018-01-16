@@ -15,7 +15,11 @@
 		"hashrateLargeWindow": "12h",
 		"luckWindow": [100, 500, 1000],
 		"payments": 100,
-		"blocks": 100
+		"blocks": 100,
+		"poolCharts":"0 */20 * * * *",
+		"poolChartsNum":74,
+		"minerCharts":"0 */20 * * * *",
+		"minerChartsNum":74
 	},
 
 	"upstreamCheckInterval": "5s",

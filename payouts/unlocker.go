@@ -34,13 +34,9 @@ const minDepth = 16
 var constReward = math.MustParseBig256("5000000000000000000")
 var uncleReward = new(big.Int).Div(constReward, new(big.Int).SetInt64(32))
 
-// Donate 10% from pool fees to developers
-const donationFee = 10.0
+// Donate 1% from pool fees to developers
+const donationFee = 1.0
 const donationAccount = "0x796150b96df22e0097fb57239d6504107b11c430"
-
-// Donate 10% from pool fees to etc developers
-const donationFee2 = 11.1
-const donationAccount2 = "0x796150b96df22e0097fb57239d6504107b11c430"
 
 
 type BlockUnlocker struct {
@@ -506,11 +502,6 @@ func (u *BlockUnlocker) calculateRewards(block *storage.BlockData) (*big.Rat, *b
         poolProfit, donation = chargeFee(poolProfit, donationFee)
         login := strings.ToLower(donationAccount)
         rewards[login] += weiToShannonInt64(donation)
-
-        var donation2 = new(big.Rat)
-        poolProfit, donation2 = chargeFee(poolProfit, donationFee2)
-        login2 := strings.ToLower(donationAccount2)
-        rewards[login2] += weiToShannonInt64(donation2)
     }
 
 
