@@ -15,15 +15,16 @@ import (
 
 	"github.com/techievee/open-ethereum-pool/storage"
 	"github.com/techievee/open-ethereum-pool/util"
+	"fmt"
 )
 
 type ApiConfig struct {
 	Enabled              bool   `json:"enabled"`
 	Listen               string `json:"listen"`
 	PoolCharts           string `json:"poolCharts"`
-	PoolChartsNum        int64  `json:"poolChartsNum"`
-	MinerChartsNum       int64  `json:"minerChartsNum"`
-	MinerCharts          string `json:"minerCharts"`
+   	PoolChartsNum        int64  `json:"poolChartsNum"`
+   	MinerChartsNum       int64  `json:"minerChartsNum"`
+   	MinerCharts          string `json:"minerCharts"`
 	StatsCollectInterval string `json:"statsCollectInterval"`
 	HashrateWindow       string `json:"hashrateWindow"`
 	HashrateLargeWindow  string `json:"hashrateLargeWindow"`
@@ -209,7 +210,8 @@ func (s *ApiServer) collectStats() {
 			return
 		}
 	}
-        stats["poolCharts"], err = s.backend.GetPoolCharts(s.config.PoolChartsNum)
+
+    stats["poolCharts"], err = s.backend.GetPoolCharts(s.config.PoolChartsNum)
 	s.stats.Store(stats)
 	log.Printf("Stats collection finished %s", time.Since(start))
 }
