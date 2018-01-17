@@ -1,31 +1,42 @@
-<div class="jumbotron">
-  <div class="container">
-    <p class="lead">Pool always pay full block reward including TX fees and uncle rewards.</p>
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title ">Pool always pay full block reward including TX fees and uncle rewards.</h3>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+
+<div class="m-content">
+
     <strong>
-      Block maturity requires <u>up to</u> </strong> <span class="label label-success">520</span> <strong>blocks.
-      Usually it's less indeed.
+        Block maturity requires <u>up to</u> <span class="m-badge m-badge--metal m-badge--wide">{{config.blocksMature}}</span> blocks.
     </strong>
-  </div>
-</div>
-<div class="container">
-  {{#if model.luck}}
-    {{partial "luck"}}
-  {{/if}}
+        <br><br>
+        {{#if model.luck}}
+            {{partial "luck"}}
+        {{/if}}
+        <br>
+        <ul class="nav nav-tabs" role="tablist">
+            {{#active-li currentWhen='blocks.index' role='presentation' class="nav-item"}}
+                {{#link-to 'blocks.index' class="nav-link" data-toggle="tab"}}All{{/link-to}}
+            {{/active-li}}
+            {{#active-li currentWhen='blocks.mature' role='presentation' class="nav-item"}}
+                {{#link-to 'blocks.mature' class="nav-link" data-toggle="tab"}}Mature <span class="m-badge m-badge--success m-badge--wide m-badge--rounded">{{format-number model.maturedTotal}}</span>{{/link-to}}
+            {{/active-li}}
+            {{#active-li currentWhen='blocks.immature' role='presentation' class="nav-item"}}
+                {{#link-to 'blocks.immature' class="nav-link" data-toggle="tab"}}Immature <span class="m-badge m-badge--info m-badge--wide m-badge--rounded">{{format-number model.immatureTotal}}</span>{{/link-to}}
+            {{/active-li}}
+            {{#active-li currentWhen='blocks.pending' role='presentation' class="nav-item"}}
+                {{#link-to 'blocks.pending' class="nav-link" data-toggle="tab"}}New <span class="m-badge m-badge--warning m-badge--wide m-badge--rounded">{{format-number model.candidatesTotal}}</span>{{/link-to}}
+            {{/active-li}}
+        </ul>
+        {{outlet}}
 
-   <ul class="nav nav-tabs">
-    {{#active-li currentWhen='blocks.index' role='presentation'}}
-      {{#link-to 'blocks.index'}}All{{/link-to}}
-    {{/active-li}}
-     {{#active-li currentWhen='blocks.mature' role='presentation'}}
-      {{#link-to 'blocks.mature'}}Mature <span class="badge alert-success">{{format-number model.maturedTotal}}</span>{{/link-to}}
-    {{/active-li}}
-    {{#active-li currentWhen='blocks.immature' role='presentation'}}
-      {{#link-to 'blocks.immature'}}Immature <span class="badge alert-success">{{format-number model.immatureTotal}}</span>{{/link-to}}
-    {{/active-li}}
-    {{#active-li currentWhen='blocks.pending' role='presentation'}}
-      {{#link-to 'blocks.pending'}}New Blocks <span class="badge alert-info">{{format-number model.candidatesTotal}}</span>{{/link-to}}
-    {{/active-li}}
-  </ul>
 
-  {{outlet}}
 </div>
+
+
+
+

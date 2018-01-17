@@ -1,40 +1,42 @@
-<div class="container">
-  {{#if model.rewards}}
-  <h4>Your Latest Rewards</h4>
-   <table class="table table-condensed table-striped">
-  {{#each model.sumrewards as |sumreward|}}
-  <tr>
-    <td>{{sumreward.name}}</td>
-    <td>{{format-balance sumreward.reward}}</td>
-  </tr>
-  {{/each}}
-   </table>
-   <span class="label label-default">Immature</span> <span class="label label-success">Matured</span>
-  <table class="table table-condensed table-striped">
-    <thead>
-      <tr>
-        <th>Block Height</th>
-        <th>Reward</th>
-        <th>Round Share</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model.rewards as |tx|}}
-        <tr>
-          <td>{{format-number  tx.blockheight}}</td>
-          <td>
-		{{#if tx.immature}}
-                        <span class="label label-default">{{format-balance tx.reward}}</span>
-                {{else}}
-                        <span class="label label-success">{{format-balance tx.reward}}</span>
-                {{/if}}
-	  </td>
-          <td>{{format-number tx.percent style='percent' maximumFractionDigits='6'}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-  {{else}}
-  <h3>No rewards yet</h3>
-  {{/if}}
+<div class="m--padding-20">
+    {{#if model.rewards}}
+        <h4>Your Latest Rewards</h4>
+        <div class="table-responsive">
+            <table class="table table-condensed table-striped">
+                {{#each model.sumrewards as |sumreward|}}
+                    <tr>
+                        <td>{{sumreward.name}}</td>
+                        <td>{{format-balance sumreward.reward}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+            <span class="m-badge m-badge--metal m-badge--wide m-badge--rounded">Immature</span> <span class="m-badge m-badge--success m-badge--wide m-badge--rounded">Matured</span>
+            <table class="table table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>Block Height</th>
+                    <th>Reward</th>
+                    <th>Round Share</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each model.rewards as |tx|}}
+                    <tr>
+                        <td>{{format-number tx.blockheight}}</td>
+                        <td>
+                            {{#if tx.immature}}
+                                <h5 class="m--font-metal m--font-boldest"><strong>{{format-balance tx.reward}}</strong></h5>
+                            {{else}}
+                                <h5 class="m--font-success m--font-boldest"><strong>{{format-balance tx.reward}}</strong></h5>
+                            {{/if}}
+                        </td>
+                        <td>{{format-number tx.percent style='percent' maximumFractionDigits='2'}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{else}}
+        <h3>No rewards yet</h3>
+    {{/if}}
 </div>

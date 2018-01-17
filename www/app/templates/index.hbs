@@ -1,75 +1,238 @@
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <h1 style="font-size: 24px">
-          <strong>Ethereum Classic Pool</strong>
-        </h1>
-        <strong>Min. payout threshold: {{config.PayoutThreshold}}</strong>, Payouts runs every hour.<br/>
-	<table>
-        <tr><td><span class="label label-success">PPLNS</span></td><td> Pay-Per-Last-1000-Shares</td></tr>
-        <tr><td><span class="label label-success">4G</span></td><td> Share difficulty for high mining efficiency</td></tr>
-	</table>
-      </div>
-      <div class="col-md-3 stats">
-        <div><i class="fa fa-users"></i> Miners Online: <span id="poolHashrate">{{format-number stats.model.minersTotal}}</span></div>
-        <div><i class="fa fa-tachometer"></i> Pool Hash Rate: <span id="poolHashrate">{{format-hashrate stats.model.hashrate}}</span></div>
-        <div><i class="fa fa-money"></i> Pool Fee: <span id="poolFee" class="label label-success">{{config.PoolFee}}</span></div>
-        {{#if stats.model.stats.lastBlockFound}}
-        <div><i class="fa fa-clock-o"></i> Last Block Found: <span>{{format-relative (seconds-to-ms stats.model.stats.lastBlockFound)}}</span></div>
-        {{/if}}
-      </div>
-      <div class="col-md-4 stats">
-        <div><i class="fa fa-unlock-alt"></i> Network Difficulty: <span>{{with-metric-prefix stats.difficulty}}</span></div>
-        <div><i class="fa fa-tachometer"></i> Network Hash Rate: <span>{{format-hashrate stats.hashrate}}</span></div>
-        <div><i class="fa fa-bars"></i> Blockchain Height: <span>{{format-number stats.height}}</span></div>
-        <div><i class="fa fa-clock-o"></i> Current Round Variance: <span>{{format-number stats.roundVariance style='percent'}}</span></div>
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- BEGIN: Subheader -->
+            <div class="m-subheader ">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="m-subheader__title "><img src="/assets/img/coin.png" style="width:64px; padding-right: 10px;" width=64>{{config.CoinName}} ({{config.COIN}}) Mining Pool {{config.COIN}}.ALTpool.pro</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Subheader -->
 
-<div class="container">
-  <div class="stats">
-    <h4>Your Stats &amp; Payment History</h4>
-    <div class="input-group">
-      {{input value=cachedLogin class="form-control" placeholder="Enter Your Ethereum Address"}}
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" {{action 'lookup' cachedLogin}}>
+            <div class="m-content">
+
+
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-xl-4">
+                                <div class="m-portlet">
+                                    <div class="m-portlet__body">
+                                        <!--begin:: Widgets/Stats2-2 -->
+                                        <div class="m-widget4">
+                                            <div class="m-widget4__item" >
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-dollar"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Payout threshold, {{config.COIN}}</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number m--font-success">{{config.PayoutThreshold}}</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-send-o"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Payouts run, min</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">60</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-thumbs-o-up"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Block confirmations</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">{{config.blocksMature}}</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-info-circle"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Reward type</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number" role="button" data-toggle="m-tooltip" data-trigger="focus" title="Pay Per Last {{config.PPLNS}} Shares">PPLNS</span></div>
+                                            </div>
+                                        </div>
+                                        <!--begin:: Widgets/Stats2-2 -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 col-xl-4">
+                                <div class="m-portlet">
+                                    <div class="m-portlet__body">
+                                        <!--begin:: Widgets/Stats2-2 -->
+                                        <div class="m-widget4">
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-users"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Miners Online</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number m--font-info">{{format-number stats.model.minersTotal}}</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-tachometer"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Pool Hashrate</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">{{format-hashrate stats.model.hashrate}}</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-money"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Pool Fee</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number m--font-danger">{{config.PoolFee}}</span></div>
+                                            </div>
+                                            {{#if stats.model.stats.lastBlockFound}}
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-clock-o"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Last Block Found</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">{{format-relative (seconds-to-ms stats.model.stats.lastBlockFound)}}</span></div>
+                                            </div>
+                                            {{/if}}
+                                        </div>
+                                        <!--begin:: Widgets/Stats2-2 -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 col-xl-4">
+                                <div class="m-portlet">
+                                    <div class="m-portlet__body">
+                                        <!--begin:: Widgets/Stats2-2 -->
+                                        <div class="m-widget4">
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-unlock-alt"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Network Difficulty</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">{{with-metric-prefix stats.difficulty}}</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-tachometer"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Network Hashrate</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">{{format-hashrate stats.hashrate}}</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-bars"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Blockchain Height</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">{{format-number stats.height}}</span></div>
+                                            </div>
+                                            <div class="m-widget4__item">
+                                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-clock-o"></i></span></div>
+                                                <div class="m-widget4__info"><span class="m-widget4__text">Current Round Variance</span></div>
+                                                <div class="m-widget4__ext"><span class="m-widget4__number">{{format-number stats.roundVariance style='percent'}}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--begin:: Widgets/Stats2-2 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    <div class="stats">
+                        <h4>Your Stats &amp; Payment History</h4>
+                        <div class="input-group">
+                            {{input value=cachedLogin class="form-control m-input m-input--air" placeholder="Enter Your Wallet Address"}}
+                            <span class="input-group-btn">
+        <button class="btn m-btn m-btn--gradient-from-primary m-btn--gradient-to-info" type="button" {{action 'lookup' cachedLogin}}>
           <span style="display: inline;"><i class="fa fa-search"></i> Lookup</span>
         </button>
       </span>
-    </div>
-  </div>
-  <div>
-    <hr/>
-    <div>
-    {{high-charts mode=chartMode chartOptions=chartOptions content=chartData}}
-    </div>
-	<h4 class="note note-info">
-      Stratum connections: <br/><br>
-	<table width="50%"><tr><td><u>Location</u></td><td><u>Host</u></td><td><u>Port</u></td></tr>
-		<tr><td>Germany</td><td>etc-de.ethteam.com</td><td>8008</td></tr>
-		<tr><td>USA (North Kansas City)</td><td>etc-us.ethteam.com</td><td>8008</td></tr>
-	</table>
-	</h4>
-     <h4 class="note note-info">
-	<u>Claymore Miner:</u><br>
-	De: EthDcrMiner64.exe -epool etc-de.ethteam.com:8008 -ewal 0xYOUR_WALLET -epsw x<br>
-	Us: EthDcrMiner64.exe -epool etc-us.ethteam.com:8008 -ewal 0xYOUR_WALLET -epsw x
-    </h4>
-        <h4 class="note note-info text-center">
-        Donate 10% to Etc Developers and 10% to Pool Developer, more <a href="/#/about/">@About</a>
-    </h4>
+                        </div>
+                    </div>
+                    <div>
+                        <hr><br>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <h2 class="note note-info m--font-info">Stratum {{config.CoinName}} ({{config.COIN}}) Pool</h2>
+                                <br>
+                                    This is a high performance stratum pool for mining {{config.CoinName}} ({{config.COIN}}).<br>
+                                    Current pool fee: <span class="m-badge m-badge--danger m-badge--wide m-badge--rounded">{{config.PoolFee}}</span>
+                                    <br><br>
+                                <h3>{{config.CoinName}} ({{config.COIN}}) Stratum servers:</h3>
+                                <form class="m-form m-form--fit m-form--label-align-right">
+                                    <div class="m-portlet__body">
+                                        <div class="form-group m-form__group row">
+                                            <label for="server-1" class="col-4 col-form-label">
+                                                Standard server
+                                            </label>
+                                            <div class="col-8">
+                                                <input class="form-control m-input" readonly type="text" id="server-1" value="stratum+tcp://{{config.StratumHost}}:{{config.StratumPort}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-form__group row">
+                                            <label for="server-2" class="col-4 col-form-label">
+                                                Nicehash server
+                                            </label>
+                                            <div class="col-8">
+                                                <input class="form-control m-input" readonly type="text" id="server-2" value="stratum+tcp://{{config.StratumHostNH}}:{{config.StratumPortNH}}">
+                                            </div>
+                                        </div>
 
-     <h4 class="note note-info text-center">
-      Start mining: <a href="http://ethteam.com/download/EtcStartBundle.zip"  target="_blank">EtcStartBundle.zip</a> (Ethminer + Proxy)
-    </h4>
-     <h4 class="note note-info text-center">
-      Telegram notification: <a href="https://web.telegram.org/#/im?p=@EtcTeam_bot"  target="_blank">@EtcTeam</a>
-    </h4>
-     <h4 class="note note-info text-center">
-      This is an Ethereum Classic Pool!
-    </h4>
-  </div>
-</div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                {{high-charts mode=chartMode chartOptions=chartOptions content=chartData}}
+                            </div>
+                        </div>
+                        <br><br>
+                        <h3>Stratum mining for Nvidia / Amd using EthMiner</h3>
+                        <p>Get the latest miner from <a href="https://github.com/ethereum-mining/ethminer/releases">EthMiner github releases</a>, create a batch file, paste the following lines into the file, save and run. Do not forget to change your {{config.COIN}} wallet address.<br>
+                            <span class="m-badge m-badge--warning m-badge--wide m-badge--rounded">Hint!</span> use -U for Nvidia and -G for AMD<br>
+                        </p>
+
+                        <div class="alert m-alert m-alert--default" role="alert">
+<pre>setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+ethminer.exe -U -SP 1 -S {{config.StratumHost}}:{{config.StratumPort}} -O {{config.StratumWallet}}.rig1 --farm-recheck 1000 -v 2</pre>
+                        </div>
+
+                        <br>
+                        <h3>Stratum mining for Nvidia / Amd using Claymore</h3>
+                        <p>Get the latest miner from <a href="https://bitcointalk.org/index.php?topic=1433925.0">Claymore's bitcoin talk thread</a>, create a batch file, paste the following lines into the file, save and run. Do not forget to change your {{config.COIN}} wallet address.<br>
+                        </p>
+
+                        <div class="alert m-alert m-alert--default" role="alert">
+<pre>setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+EthDcrMiner64.exe -epool stratum+tcp://{{config.StratumHost}}:{{config.StratumPort}} -ewal {{config.StratumWallet}} -eworker rig1 -epsw x -allcoins -1 -mode 1 -allpools 1</pre>
+                        </div>
+
+                        <br>
+                        <h3>Nicehash configuration</h3>
+
+                        <form class="m-form m-form--fit m-form--label-align-right">
+                            <div class="m-portlet__body">
+                                <div class="form-group m-form__group row">
+                                    <label for="nh-server-1" class="col-3 col-form-label">
+                                        Stratum hostname or IP
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-1" value="{{config.StratumHostNH}}">
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="nh-server-2" class="col-3 col-form-label">
+                                        Port
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-2" value="{{config.StratumPortNH}}">
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="nh-server-3" class="col-3 col-form-label">
+                                        Username
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-3" value="Your {{config.COIN}} wallet">
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="nh-server-4" class="col-3 col-form-label">
+                                        Password
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-4" value="#">
+                                        <span class="m-form__help">Using <b>#</b> is important here!</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <br>
+
+
+                    </div>
+
+            </div>

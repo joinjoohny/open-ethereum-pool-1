@@ -18,5 +18,10 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     this._super(controller, model);
     Ember.run.later(this, this.refresh, 5000);
+    Ember.run.schedule('afterRender', this, function() {
+        mApp.init();
+        mLayout.init();
+        mQuickSidebar.init();
+    });
   }
 });

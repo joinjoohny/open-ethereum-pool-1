@@ -1,71 +1,153 @@
 {{outlet 'error' }}
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 stats">
-        <div style="display: block;">
-          <i class="fa fa-cloud"></i> Immature Balance: <span>{{format-balance model.stats.immature}}</span><br>
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title ">Miner: <strong>{{model.login}}</strong></h3>
         </div>
-        <div style="display: block;">
-          <i class="fa fa-bank"></i> Pending Balance: <span>{{format-balance model.stats.balance}}</span><br>
-		{{#if model.stats.payouttreshold}}
-		 <small>Payout threshold: {{format-balance model.stats.payouttreshold}}</small>
-		{{/if}}
-        </div>
-        {{#if model.stats.pending}}
-        <div style="display: block;">
-          <i class="fa fa-clock-o"></i> Current Payment: <span>{{format-balance model.stats.pending}}</span><br>
-        </div>
-        {{/if}}
-        <div style="display: block;"><i class="fa fa-money"></i> Total Paid: <span>{{format-balance model.stats.paid}}</span></div>
-	<div style="display: block;"><i class="fa fa-money"></i> Last 24h Reward: <span>{{format-balance model.24hreward}}</span></div>
-      </div>
-      <div class="col-md-4 stats">
-        {{#if model.stats.lastShare}}
-        <div style="display: block;"><i class="fa fa-clock-o"></i>
-          Last Share Submitted: <span>{{format-relative (seconds-to-ms (string-to-int model.stats.lastShare))}}</span>
-        </div>
-        {{/if}}
-        <div style="display: block;"><i class="fa fa-gears"></i> Workers Online: <span>{{format-number model.workersOnline}}</span></div>
-        <div style="display: block;"><i class="fa fa-tachometer"></i> Hashrate (30m): <span>{{format-hashrate model.currentHashrate}}</span></div>
-        <div style="display: block;"><i class="fa fa-tachometer"></i> Hashrate (3h): <span>{{format-hashrate model.hashrate}}</span></div>
-      </div>
-      <div class="col-md-4 stats">
-        <div style="display: block;"><i class="fa fa-tachometer"></i> Blocks Found: <span>{{format-number model.stats.blocksFound fallback='0'}}</span></div>
-        <div style="display: block;"><i class="fa fa-paper-plane-o"></i> Total Payments: <span>{{format-number model.paymentsTotal}}</span></div>
-        <div style="display: block;">
-          <i class="fa fa-gears"></i> Your Round Share: <span>{{format-number roundPercent style='percent' maximumFractionDigits='6'}}</span><br/>
-          <small>Percent of your contribution to last 1000 poolshares.</small>
-        </div>
-        <div style="display: block;">
-          <i class="fa fa-clock-o"></i>
-          Epoch Switch: <span>{{format-relative applicationController.nextEpoch units="hour"}}</span>
-        </div>
-      </div>
     </div>
-         <div style="display: block;">
-		<div style="font-size:100%;"><i class="fa fa-gears"></i> Your Round Shares:</div>
-		  <p style="font-size:60%;letter-spacing:-0.3em;"> {{#each model.shares as |share|}} {{share}} {{/each}}</p>
+</div>
+<!-- END: Subheader -->
+
+
+<div class="m-content">
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-xl-4">
+            <div class="m-portlet">
+                <div class="m-portlet__body">
+                    <div class="m-widget4">
+                        <div class="m-widget4__item" >
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-cloud"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Immature Balance</span><br><span class="m-widget4__sub">Block rewards awaiting maturity. May take 8-16 hours</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number m--font-danger">{{format-balance model.stats.immature}}</span></div>
+                        </div>
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-bank"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Pending Balance</span><br><span class="m-widget4__sub">Block rewards awaiting payout</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number m--font-warning">{{format-balance model.stats.balance}}</span></div>
+                        </div>
+            {{#if model.stats.pending}}
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-clock-o"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Current Payment</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number">{{format-balance model.stats.pending}}</span></div>
+                        </div>
+            {{/if}}
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-money"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Last 24h Reward</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number">{{format-balance model.24hreward}}</span></div>
+                        </div>
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-money"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__title">Total Paid</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number m--font-success">{{format-balance model.stats.paid}}</span></div>
+                        </div>
+                    </div>
                 </div>
-         </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xl-4">
+            <div class="m-portlet">
+                <div class="m-portlet__body">
+                    <div class="m-widget4">
+                        {{#if model.stats.lastShare}}
+                        <div class="m-widget4__item" >
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-clock-o"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Last Share Submitted</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number">{{format-relative (seconds-to-ms (string-to-int model.stats.lastShare))}}</span></div>
+                        </div>
+                        {{/if}}
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-gears"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Workers Online</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number m--font-info">{{format-number model.workersOnline}}</span></div>
+                        </div>
+                            <div class="m-widget4__item">
+                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-tachometer"></i></span></div>
+                                <div class="m-widget4__info"><span class="m-widget4__text">Hashrate (30m)</span></div>
+                                <div class="m-widget4__ext"><span class="m-widget4__number">{{format-hashrate model.currentHashrate}}</span></div>
+                            </div>
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-tachometer"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Hashrate (12h)</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number">{{format-hashrate model.hashrate}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xl-4">
+            <div class="m-portlet">
+                <div class="m-portlet__body">
+                    <div class="m-widget4">
+                        {{#if model.stats.lastShare}}
+                            <div class="m-widget4__item" >
+                                <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-th"></i></span></div>
+                                <div class="m-widget4__info"><span class="m-widget4__text">Blocks Found</span></div>
+                                <div class="m-widget4__ext"><span class="m-widget4__number">{{format-number model.stats.blocksFound fallback='0'}}</span></div>
+                            </div>
+                        {{/if}}
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-paper-plane-o"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Total Payments</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number">{{format-number model.paymentsTotal}}</span></div>
+                        </div>
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-percent"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Your Round Share</span><br><span class="m-widget4__sub">Percent of your contribution to last {{config.PPLNS}} poolshares</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number">{{format-number roundPercent style='percent' maximumFractionDigits='2'}}</span></div>
+                        </div>
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__icon"><span class="m-widget4__icon m--font-brand"><i class="fa fa-clock-o"></i></span></div>
+                            <div class="m-widget4__info"><span class="m-widget4__text">Epoch Switch</span></div>
+                            <div class="m-widget4__ext"><span class="m-widget4__number">{{format-relative applicationController.nextEpoch units="hour"}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!--begin::Portlet-->
+		<div class="m-portlet m-portlet--head-sm" id="m_portlet_tools_4">
+			<div class="m-portlet__head">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<span class="m-portlet__head-icon">
+							<i class="flaticon-cogwheel-2"></i>
+						</span>
+						<h3 class="m-portlet__head-text">
+							Your Round Shares
+						</h3>
+					</div>
+				</div>
+			</div>
+			<div class="m-portlet__body">
+				<div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="200" style="overflow:hidden; height: 200px">
+                    <p style="font-size:60%;letter-spacing:-0.3em;"> {{#each model.shares as |share|}} {{share}} {{/each}}</p>
+			    </div>
+			</div>
+		</div>
+		<!--end::Portlet-->
+
+    {{high-charts mode=chartMode chartOptions=chartOptions content=chartData}}
+
+      <ul class="nav nav-tabs" role="tablist">
+        {{#active-li currentWhen='account.index' role='presentation' class="nav-item"}}
+          {{#link-to 'account.index' class="nav-link" data-toggle="tab"}}Workers <span class="m-badge m-badge--danger m-badge--wide m-badge--rounded">{{model.workersOffline}}</span>{{/link-to}}
+        {{/active-li}}
+        {{#active-li currentWhen='account.rewards' role='presentation' class="nav-item"}}
+          {{#link-to 'account.rewards' class="nav-link" data-toggle="tab"}}Rewards{{/link-to}}
+        {{/active-li}}
+        {{#active-li currentWhen='account.payouts' role='presentation' class="nav-item"}}
+          {{#link-to 'account.payouts' class="nav-link" data-toggle="tab"}}Payouts{{/link-to}}
+        {{/active-li}}
+      </ul>
+
+    {{outlet}}
 </div>
 
-<div class="container">
-
-{{high-charts mode=chartMode chartOptions=chartOptions content=chartData}}
-
-  <ul class="nav nav-tabs">
-    {{#active-li currentWhen='account.index' role='presentation'}}
-      {{#link-to 'account.index'}}Workers <span class="badge alert-danger">{{model.workersOffline}}</span>{{/link-to}}
-    {{/active-li}}
-    {{#active-li currentWhen='account.rewards' role='presentation'}}
-      {{#link-to 'account.rewards'}}Rewards{{/link-to}}
-    {{/active-li}}
-    {{#active-li currentWhen='account.payouts' role='presentation'}}
-      {{#link-to 'account.payouts'}}Payouts{{/link-to}}
-    {{/active-li}}
-
-  </ul>
-</div>
-
-{{outlet}}

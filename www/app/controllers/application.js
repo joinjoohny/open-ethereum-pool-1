@@ -16,6 +16,10 @@ export default Ember.Controller.extend({
     }
   }),
 
+  isPercentAboveZero: Ember.computed('model.exchangedata', function() {
+      return this.get('model.exchangedata.percent_change_24h') > 0;
+  }),
+
   roundShares: Ember.computed('model.stats', {
     get() {
       return parseInt(this.get('model.stats.roundShares'));

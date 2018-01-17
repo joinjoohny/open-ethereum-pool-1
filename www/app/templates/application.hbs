@@ -1,53 +1,188 @@
-<!-- Fixed navbar -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand"><span class="logo-1">Ξth</span><span class="logo-2">Team</span></a>
+
+<!-- BEGIN: Header -->
+<header class="m-grid__item m-header"  data-minimize-offset="200" data-minimize-mobile-offset="200" >
+    <div class="m-container m-container--responsive m-container--xxl m-container--full-height">
+        <div class="m-stack m-stack--ver m-stack--desktop">
+            <!-- BEGIN: Brand -->
+            <div class="m-stack__item m-brand  m-brand--skin-light ">
+                <div class="m-stack m-stack--ver m-stack--general">
+                    <div class="m-stack__item m-stack__item--middle m-brand__logo">
+                            {{#link-to 'index' class="m-brand__logo-wrapper"}}<img alt="" src="/assets/img/altpool_logo.png" height="40" />{{/link-to}}
+                    </div>
+                    <div class="m-stack__item m-stack__item--middle m-brand__tools">
+
+                        <!-- BEGIN: Responsive Header Menu Toggler -->
+                        <a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
+                            <span></span>
+                        </a>
+                        <!-- END -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- END: Brand -->
+            <div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
+                <!-- BEGIN: Horizontal Menu -->
+                <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+
+                <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light collapse navbar-collapse"  >
+                    <ul class="m-menu__nav ">
+                        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"
+                            data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
+                            <a href="javascript:void(0);" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-network"></i>
+                                <span class="m-menu__link-text">Pools</span>
+                                <i class="m-menu__hor-arrow la la-angle-down"></i>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left"><span
+                                    class="m-menu__arrow m-menu__arrow--adjust"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://eth.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-eth.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;ETH Pool (Ethereum)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://etc.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-etc.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;ETC Pool (Eth Classic)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://ella.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-ella.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;ELLA Pool (Ellaism)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://etp.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-etp.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;ETP Pool (Metaverse)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://ubq.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-ubq.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;UBQ Pool (Ubiq)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://exp.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-exp.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;EXP Pool (Expanse)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://vic.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-vic.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;VIC Pool (Victorium)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " aria-haspopup="true">
+                                        <a href="http://btgpool.pro/" class="m-menu__link ">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-btg.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;BTG Pool (Bitcoin Gold)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " aria-haspopup="true">
+                                        <a href="http://zec.altpool.pro/" class="m-menu__link ">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-zec.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;ZEC Pool (ZCash)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://btcz.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-btcz.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;BTCZ Pool (BitcoinZ)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://zen.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-zen.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;ZEN Pool (ZenCash)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://hush.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-hush.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;HUSH Pool (Hush)</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " data-redirect="true" aria-haspopup="true">
+                                        <a href="http://kmd.altpool.pro/" class="m-menu__link" target="_blank">
+                                            <span class="m-menu__link-text"><img src="http://altpool.pro/img/logos/coin-kmd.png" class="align-content-center" style="width: 100%; height: auto; max-height: 30px;max-width: 30px;">&nbsp;&nbsp;&nbsp;KMD Pool (Komodo)</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" data-redirect="true" aria-haspopup="true">
+                            {{#link-to 'help' class="m-menu__link m-menu__toggle"}}
+                                <i class="m-menu__link-icon flaticon-info"></i>
+                                <span class="m-menu__link-text">Help</span>
+                            {{/link-to}}
+                        </li>
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" data-redirect="true" aria-haspopup="true">
+                                {{#link-to 'blocks' class="m-menu__link m-menu__toggle"}}
+                                <i class="m-menu__link-icon flaticon-squares-1"></i>
+                                <span class="m-menu__link-text">Pool Blocks {{#if immatureTotal}}<span class="m-badge m-badge--success m-badge--wide m-badge--rounded">{{immatureTotal}}</span>{{/if}}</span>
+                                {{/link-to}}
+                        </li>
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" data-redirect="true" aria-haspopup="true">
+                            {{#link-to 'payments' class="m-menu__link m-menu__toggle"}}
+                                <i class="m-menu__link-icon flaticon-paper-plane"></i>
+                                <span class="m-menu__link-text">Payments</span>
+                            {{/link-to}}
+                        </li>
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" data-redirect="true" aria-haspopup="true">
+                            {{#link-to 'miners' class="m-menu__link m-menu__toggle"}}
+                                <i class="m-menu__link-icon flaticon-users"></i>
+                                <span class="m-menu__link-text">Miners <span class="m-badge m-badge--info m-badge--wide m-badge--rounded">{{model.minersTotal}}</span></span>
+                            {{/link-to}}
+                        </li>
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" data-redirect="true" aria-haspopup="true">
+                            <a href="javascript:void(0);" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-analytics m--font-metal"></i>
+                                {{#if isPercentAboveZero}}<span class="m-menu__link-text m--font-success">
+                                    ${{format-number model.exchangedata.price_usd maximumFractionDigits='2'}} <i class="fa fa-caret-up"></i> (+{{model.exchangedata.percent_change_24h}}%)
+                                </span>
+                                {{else}}
+                                <span class="m-menu__link-text m--font-danger">
+                                    ${{format-number model.exchangedata.price_usd maximumFractionDigits='2'}} <i class="fa fa-caret-down"></i> ({{model.exchangedata.percent_change_24h}}%)
+                                </span>{{/if}}
+                            </a>
+                        </li>
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" data-redirect="true" aria-haspopup="true">
+                            <a href="https://t.me/ALTPOOL_PRO" target="_blank" class="m-menu__link m-menu__toggle" title="Join our Telegram group">
+                                <i style="color: #0088cc" class="m-menu__link-icon fa fa-telegram"></i>
+                                <span class="m-menu__link-text m--font-metal">Support</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END: Horizontal Menu -->
+            </div>
+        </div>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        {{#active-li currentWhen='index'}}
-          {{#link-to 'index'}}
-            <i class="fa fa-home"></i> Home
-          {{/link-to}}
-        {{/active-li}}
-        {{#active-li currentWhen='help'}}
-          {{#link-to 'help'}}
-            <i class="fa fa-rocket"></i> Features
-          {{/link-to}}
-        {{/active-li}}
-        {{#active-li currentWhen='blocks'}}
-          {{#link-to 'blocks'}}
-            <i class="fa fa-cubes"></i> Blocks
-            {{#if immatureTotal}}
-              <span class="badge alert-success">{{immatureTotal}}</span>
-            {{/if}}
-          {{/link-to}}
-        {{/active-li}}
-        {{#active-li currentWhen='payments'}}
-          {{#link-to 'payments'}}
-            <i class="fa fa-paper-plane-o"></i> Payments
-          {{/link-to}}
-        {{/active-li}}
-        {{#active-li currentWhen='miners'}}
-          {{#link-to 'miners'}}
-            <i class="fa fa-users"></i> Miners
-          {{/link-to}}
-        {{/active-li}}
-        {{#active-li currentWhen='about'}}
-          {{#link-to 'about'}}
-            <i class="fa fa-comments"></i> About <span class="badge alert-success">&#x2713;</span>
-          {{/link-to}}
-        {{/active-li}}
-      </ul>
-    </div>
-  </div>
-</div>
+</header>
+<!-- END: Header -->
+
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+
+    <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
 {{outlet}}
+
+    </div>
+</div>
+
+<!-- begin::Footer -->
+<footer class="m-grid__item	m-footer ">
+    <div class="m-container m-container--fluid m-container--full-height m-page__container">
+        <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+            <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+				<span class="m-footer__copyright">
+					2017 &copy; {{config.COIN}}.ALTpool.pro  | {{#link-to 'about' class="m-menu__link m-menu__toggle"}}About{{/link-to}} | Telegram: <a href="https://t.me/ALTPOOL_PRO" target="_blank">@ALTPOOL_PRO</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end::Footer -->
+
+
+</div>
+<!-- end:: Page -->

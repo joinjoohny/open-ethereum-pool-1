@@ -1,33 +1,33 @@
 <tr>
   <td>
     {{#if block.uncle}}
-      {{format-number block.height}}
+      <a href="https://explorer.pirl.io/#/block/{{block.uncleHeight}}" rel="nofollow" target="_blank">{{format-number block.height}}</a>
     {{else}}
-      <a href="http://gastracker.io/block/{{block.height}}" rel="nofollow" target="_blank">{{format-number block.height}}</a>
-    {{/if}}
-  </td>
-  <td>
-    {{#if block.uncle}}
-      <a href="http://gastracker.io/block/{{block.hash}}" class="hash" rel="nofollow" target="_blank">{{formatTx block.hash}}</a>
-    {{else if block.orphan}}
-      <span class="label label-danger">Orphan</span>
-    {{else}}
-      <a href="http://gastracker.io/block/{{block.hash}}" class="hash" rel="nofollow" target="_blank">{{formatTx block.hash}}</a>
+      <a href="https://explorer.pirl.io/#/block/{{block.height}}" rel="nofollow" target="_blank">{{format-number block.height}}</a>
     {{/if}}
   </td>
   <td>{{format-date-locale block.timestamp}}</td>
   <td>
     {{#if block.isLucky}}
-      <span class="label label-success">{{format-number block.variance style='percent'}}</span>
+      <h5 class="m--font-success m--font-boldest"><strong>{{format-number block.variance style='percent'}}</strong></h5>
     {{else}}
-      <span class="label label-info">{{format-number block.variance style='percent'}}</span>
+      <h5 class="">{{format-number block.variance style='percent'}}</h5>
     {{/if}}
   </td>
   <td>
     {{#if block.uncle}}
-    <span class="label label-default">{{block.formatReward}}</span>
+    <h5 class="m--font-metal">{{block.formatReward}}</h5>
     {{else if block.isOk}}
-    <span class="label label-primary">{{block.formatReward}}</span>
+    <h5 class="m--font-primary">{{block.formatReward}}</h5>
     {{/if}}
   </td>
+    <td>
+        {{#if block.uncle}}
+            <a href="https://explorer.pirl.io/#/block/{{block.uncleHeight}}" rel="nofollow" target="_blank">{{block.hash}}</a>
+        {{else if block.orphan}}
+            <span class="label label-danger m--font-danger">Orphan</span>
+        {{else}}
+            <a href="https://explorer.pirl.io/#/block/{{block.height}}" rel="nofollow" target="_blank">{{block.hash}}</a>
+        {{/if}}
+    </td>
 </tr>

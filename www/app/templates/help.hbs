@@ -1,25 +1,118 @@
-<div class="container">
-  <div class="page-header">
-    <h1>Features</h1>
-  </div>
+            <!-- BEGIN: Subheader -->
+            <div class="m-subheader ">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="m-subheader__title ">How to mine</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Subheader -->
 
-  <h3>Start Bundle</h3>
-  <p>
-   All you need to start mining:  <a href="http://ethteam.com/download/EtcStartBundle.zip"  target="_blank">EtcStartBundle.zip</a> 
-  </p>
+<div class="m-content">
 
-  <h3>Personal payout threshold</h3>
-  <p>
-   To set the payout threshold level you have to <a href="/#/about">contact</a> me with our desire amount, account id and miner ip address.
-  </p>
 
-  <h3>Notification</h3>
-  <p>
-   For offline miner and payout notification you can use the Telegram bot:  <a href="https://web.telegram.org/#/im?p=@EtcTeam_bot"  target="_blank">@EtcTeam</a>
-  </p>
+                    <div>
+<br>
+                        <p>
 
-  <h3>PPLNS block reward</h3>
-  <p>
-   There is no way to cheat the pool.
-  </p>
+                        <h3>Expanse (EXP) Stratum servers:</h3>
+
+                        <form class="m-form m-form--fit m-form--label-align-right">
+                            <div class="m-portlet__body">
+                                <div class="form-group m-form__group row">
+                                    <label for="server-1" class="col-3 col-form-label">
+                                        Server
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="server-1" value="stratum+tcp://{{config.StratumHost}}:{{config.StratumPort}}">
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="server-2" class="col-3 col-form-label">
+                                        High diff Nicehash server
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="server-2" value="stratum+tcp://{{config.StratumHostNH}}:{{config.StratumPortNH}}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <br><br>
+                        <h3>Stratum mining for Nvidia / Amd using EthMiner</h3>
+                        <p>Get the latest miner from <a href="https://github.com/ethereum-mining/ethminer/releases">EthMiner github releases</a>, create a batch file, paste the following lines into the file, save and run. Do not forget to change your EXP wallet address.<br>
+                            <span class="m-badge m-badge--warning m-badge--wide m-badge--rounded">Hint!</span> use -U for Nvidia and -G for AMD<br>
+                        </p>
+
+                        <div class="alert m-alert m-alert--default" role="alert">
+<pre>setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+ethminer.exe -U -SP 1 -S {{config.StratumHost}}:{{config.StratumPort}} -O {{config.StratumWallet}}.rig1 --farm-recheck 1000 -v 2</pre>
+                        </div>
+
+                        <br>
+                        <h3>Stratum mining for Nvidia / Amd using Claymore</h3>
+                        <p>Get the latest miner from <a href="https://bitcointalk.org/index.php?topic=1433925.0">Claymore's bitcoin talk thread</a>, create a batch file, paste the following lines into the file, save and run. Do not forget to change your EXP wallet address.<br>
+                        </p>
+
+                        <div class="alert m-alert m-alert--default" role="alert">
+<pre>setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+EthDcrMiner64.exe -epool stratum+tcp://{{config.StratumHost}}:{{config.StratumPort}} -ewal {{config.StratumWallet}} -eworker rig1 -epsw x -allcoins -1 -mode 1 -allpools 1</pre>
+                        </div>
+
+                        <br>
+                        <h3>Nicehash configuration</h3>
+
+                        <form class="m-form m-form--fit m-form--label-align-right">
+                            <div class="m-portlet__body">
+                                <div class="form-group m-form__group row">
+                                    <label for="nh-server-1" class="col-3 col-form-label">
+                                        Stratum hostname or IP
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-1" value="{{config.StratumHostNH}}">
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="nh-server-2" class="col-3 col-form-label">
+                                        Port
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-2" value="{{config.StratumPortNH}}">
+                                    </div>
+                                </div>
+                               <div class="form-group m-form__group row">
+                                    <label for="nh-server-3" class="col-3 col-form-label">
+                                        Username
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-3" value="Your EXP wallet">
+                                    </div>
+                                </div>
+                               <div class="form-group m-form__group row">
+                                    <label for="nh-server-4" class="col-3 col-form-label">
+                                        Password
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-control m-input" readonly type="text" id="nh-server-4" value="#">
+                                        <span class="m-form__help">Using <b>#</b> is important here!</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <br>
+                        </p>
+
+                    </div>
+
 </div>
