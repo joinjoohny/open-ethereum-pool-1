@@ -32,8 +32,8 @@ const minDepth = 16
 
 const byzantiumHardForkHeight = 800000
 
-var homesteadReward = math.MustParseBig256("1000000000000000000")
-var byzantiumReward = math.MustParseBig256("1000000000000000000")
+var homesteadReward = math.MustParseBig256("10000000000000000000")
+var byzantiumReward = math.MustParseBig256("10000000000000000000")
 
 var constReward = math.MustParseBig256("10000000000000000000")
 var uncleReward = new(big.Int).Div(constReward, new(big.Int).SetInt64(32))
