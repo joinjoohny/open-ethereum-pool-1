@@ -11,7 +11,7 @@ import (
 	"gopkg.in/redis.v3"
 	"log"
 
-	"github.com/feeleep75/open-ethereum-pool/util"
+	"github.com/techievee/open-ethereum-pool/util"
 )
 
 type Config struct {
@@ -324,6 +324,14 @@ func (r *RedisClient) WriteShare(login, id string, params []string, diff int64, 
 		return nil
 	})
 	return false, err
+}
+
+func (r *RedisClient) LogIP(login string, ip string){
+
+	r.client.HSet(r.formatKey("settings", login), "ip_addr", ip)
+	ms := util.MakeTimestamp()
+	ts := ms / 1000
+	r.client.HSet(r.formatKey("settings", login), "ip_time",  strconv.FormatInt(ts, 10))
 }
 
 func (r *RedisClient) WriteBlock(login, id string, params []string, diff, roundDiff int64, height uint64, window time.Duration) (bool, error) {
