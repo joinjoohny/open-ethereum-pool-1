@@ -131,7 +131,7 @@
                             {{/link-to}}
                         </li>
                         <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" data-redirect="true" aria-haspopup="true">
-                            <a href="javascript:void(0);" class="m-menu__link m-menu__toggle">
+                            <a href="javascript:void(0);" class="m-menu__link m-menu__toggle" data-toggle="m-tooltip" data-trigger="focus" title="{{config.COIN}} Current Price">
                                 <i class="m-menu__link-icon flaticon-analytics m--font-metal"></i>
                                 {{#if isPercentAboveZero}}<span class="m-menu__link-text m--font-success">
                                     ${{format-number model.exchangedata.price_usd maximumFractionDigits='2'}} <i class="fa fa-caret-up"></i> (+{{model.exchangedata.percent_change_24h}}%)
