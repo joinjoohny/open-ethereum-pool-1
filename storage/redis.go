@@ -320,6 +320,7 @@ func (r *RedisClient) WriteShare(login, id string, params []string, diff int64, 
 
 	_, err = tx.Exec(func() error {
 		r.writeShare(tx, ms, ts, login, id, diff, window)
+		tx.HIncrBy(r.formatKey("stats"), "roundShares", diff)
 		return nil
 	})
 	return false, err
