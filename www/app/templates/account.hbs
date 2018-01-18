@@ -112,29 +112,45 @@
         </div>
     </div>
 
-	<!--begin::Portlet-->
-		<div class="m-portlet m-portlet--head-sm" id="m_portlet_tools_4">
-			<div class="m-portlet__head">
-				<div class="m-portlet__head-caption">
-					<div class="m-portlet__head-title">
-						<span class="m-portlet__head-icon">
-							<i class="flaticon-cogwheel-2"></i>
-						</span>
-						<h3 class="m-portlet__head-text">
-							Your Round Shares
-						</h3>
-					</div>
-				</div>
-			</div>
-			<div class="m-portlet__body">
-				<div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="200" style="overflow:hidden; height: 200px">
-                    <p style="font-size:60%;letter-spacing:-0.3em;"> {{#each model.shares as |share|}} {{share}} {{/each}}</p>
-			    </div>
-			</div>
-		</div>
-		<!--end::Portlet-->
+    <div class="m-portlet m-portlet--head-sm" id="m_portlet_tools_4">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon">
+                        <i class="flaticon-cogwheel-2"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                        Your Round Shares
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="180" style="overflow:hidden; height: 180px">
+                <p style="font-size:60%;letter-spacing:-0.3em;"> {{#each model.shares as |share|}} {{share}} {{/each}}</p>
+            </div>
+        </div>
+    </div>
 
-    {{high-charts mode=chartMode chartOptions=chartOptions content=chartData}}
+    <div class="m-portlet m-portlet--head-sm" id="m_portlet_tools_4">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon">
+                        <i class="flaticon-graph"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                        Your Hashrate Chart
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="420" style="overflow:hidden; height: 420px">
+                {{high-charts mode=chartMode chartOptions=chartOptions content=chartData}}
+            </div>
+        </div>
+    </div>
 
       <ul class="nav nav-tabs" role="tablist">
         {{#active-li currentWhen='account.index' role='presentation' class="nav-item"}}

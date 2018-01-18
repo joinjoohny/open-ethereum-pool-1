@@ -29,7 +29,7 @@
               <a href="/#/account/{{tx.address}}/payouts" class="hash">{{tx.address}}</a>
             </td>
             <td>
-              <a href="https://explorer.pirl.io/#/tx/{{tx.tx}}" class="hash" rel="nofollow" target="_blank">{{tx.tx}}</a>
+              <a href="{{format-explorer 'tx' tx.tx}}" class="hash" rel="nofollow" target="_blank">{{tx.tx}}</a>
             </td>
           </tr>
         {{/each}}

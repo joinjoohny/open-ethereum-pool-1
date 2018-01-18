@@ -34,7 +34,7 @@
     so you can perform maintenance of your rigs.
   </div>
     <div class="alert alert-info" role="alert">
-        Explorer:  <a href="https://explorer.pirl.io/#/address/{{model.login}}" target="_blank">{{model.login}}</a>
+        Explorer:  <a href="{{format-explorer 'address' model.login}}" target="_blank">{{model.login}}</a>
     </div>
   <div class="alert alert-info" role="alert">
     <strong>Your bulk stats JSON API URL:</strong> <a href="/api/accounts/{{model.login}}">/api/accounts/{{model.login}}</a>

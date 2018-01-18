@@ -1,9 +1,9 @@
 <tr>
   <td>
     {{#if block.uncle}}
-      <a href="https://explorer.pirl.io/#/block/{{block.uncleHeight}}" rel="nofollow" target="_blank">{{format-number block.height}}</a>
+      <a href="{{format-explorer 'block' block.uncleHeight}}" rel="nofollow" target="_blank">{{format-number block.height}}</a>
     {{else}}
-      <a href="https://explorer.pirl.io/#/block/{{block.height}}" rel="nofollow" target="_blank">{{format-number block.height}}</a>
+      <a href="{{format-explorer 'block' block.height}}" rel="nofollow" target="_blank">{{format-number block.height}}</a>
     {{/if}}
   </td>
   <td>{{format-date-locale block.timestamp}}</td>
@@ -23,11 +23,11 @@
   </td>
     <td>
         {{#if block.uncle}}
-            <a href="https://explorer.pirl.io/#/block/{{block.uncleHeight}}" rel="nofollow" target="_blank">{{block.hash}}</a>
+            <a href="{{format-explorer 'block' block.uncleHeight}}" rel="nofollow" target="_blank">{{block.hash}}</a>
         {{else if block.orphan}}
             <span class="label label-danger m--font-danger">Orphan</span>
         {{else}}
-            <a href="https://explorer.pirl.io/#/block/{{block.height}}" rel="nofollow" target="_blank">{{block.hash}}</a>
+            <a href="{{format-explorer 'block' block.height}}" rel="nofollow" target="_blank">{{block.hash}}</a>
         {{/if}}
     </td>
 </tr>
